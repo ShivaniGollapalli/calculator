@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" value="width=width-device">
+        <title>Calculator</title>
+        <link rel="stylesheet" type="text/css" href="Calculator.css">
+        <style>
+            *
+{
+    margin: 0px;
+    padding: 0px;
+}
+body
+{
+    background:linear-gradient(to right, #0f2027,#203a43,#2c5364);
+}
+h2{
+    color: white;
+    font-weight: bold;
+    font-size: 35px;
+    text-align: center;
+    margin: 10px;
+}
+#cal
+{
+    border: 5px inset rgb(152, 214, 199);
+    width: 400px;
+    height: 540px;
+    margin: auto;
+    background-color:aliceblue;
+    border-radius: 5px;
+}
+#Enter
+{
+    height: 50px;
+    width:350px;
+    margin: 20px;
+}
+button{
+    padding: 15px;
+    margin: 15px;
+    text-align: center;
+    width: 40px;
+    margin-left:20px ;
+    border:2px  inset #2c5364;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+        </style>
+    </head>
+    <body>
+        <h2>Calculator</h2>
+            <div id="mainbody">
+                <div id="cal">
+                    <center><input id="Enter">
+                        <table>
+                                <tr>
+                                    <td><button>1</button></td>
+                                    <td><button>2</button></td>
+                                    <td><button>3</button></td>
+                                    <td><button>+</button></td>
+                                </tr>
+                                <tr>
+                                    <td><button>4</button></td>
+                                    <td><button>5</button></td>
+                                    <td><button>6</button></td>
+                                    <td><button>-</button></td>
+                                </tr>
+                                <tr>
+                                    <td><button>7</button></td>
+                                    <td><button>8</button></td>
+                                    <td><button>9</button></td>
+                                    <td><button>*</button></td>
+                                </tr>
+                                <tr>
+                                    <td><button>.</button></td>
+                                    <td><button>0</button></td>
+                                    <td><button>%</button></td>
+                                    <td><button>=</button></td>
+                                </tr>
+                                <tr>
+                                    <td><button>(</button></td>
+                                    <td><button>)</button></td>
+                                    <td><button>/</button></td>
+                                    <td><button>C</button></td>
+                                </tr>
+                        </table>
+                    </center>
+                </div>
+            </div>
+      <script>
+        var Input=document.getElementById("Enter");
+var Numbers=document.querySelectorAll("button");
+var InputValue="";
+var Reg=/^\s*([-+.]?)(\d+)(?:\s*([-+*.\/])\s*((?:\s[-+.])?\d+)\s*)+$/
+for(item of Numbers){
+    item.addEventListener("click",(e)=>{
+        BText=e.target.innerText;
+        if(BText=="X"){
+            BText="*";
+            InputValue+=BText;
+            Input.value=InputValue;
+        }
+        else if(BText=="C"){
+            InputValue="";
+            Input.value=InputValue;
+        }
+        else if(BText=="="){
+            if(Reg.test(InputValue)){
+                Input.value=eval(InputValue);
+                document.getElementById("Enter").style.border=" 3px solid #2cce71";
+            }
+            else{
+                Input.value="Invalid Input";
+                document.getElementById("Enter").style.border="3px solid red";
+            }
+        }
+        else{
+            InputValue+=BText;
+            Input.value=InputValue;
+        }
+    })
+}
+</script>
+    </body>
+</html>
